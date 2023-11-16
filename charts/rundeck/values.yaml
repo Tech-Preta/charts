@@ -1,0 +1,155 @@
+image:
+  repository: rundeck/rundeck
+  tag: 4.15.0
+  pullPolicy: IfNotPresent
+
+deployment:
+  replicaCount: 1
+  annotations: {}
+  strategy:
+    type: RollingUpdate
+
+rundeck:
+  adminUser: "admin:admin,user,admin,architect,deploy,build"
+  env:
+    RUNDECK_GRAILS_URL: "http://{{ .Release.Name }}.{{ .Release.Namespace }}.svc.cluster.local"
+    RUNDECK_SERVER_FORWARDED: "true"
+    RUNDECK_LOGGING_STRATEGY: "CONSOLE"
+    RUNDECK_SECURITY_HTTPHEADERS_PROVIDER_CSP_ENABLED: 'false'
+    # RUNDECK_DATABASE_DRIVER: com.mysql.jdbc.Driver
+    # RUNDECK_DATABASE_USERNAME: rundeck
+    # RUNDECK_DATABASE_PASSWORD: rundeck
+    # RUNDECK_DATABASE_URL: jdbc:mysql://mysql/rundeck?autoReconnect=true&useSSL=false
+    # RUNDECK_PLUGIN_EXECUTIONFILESTORAGE_NAME: com.rundeck.rundeckpro.amazon-s3
+    # RUNDECK_PLUGIN_EXECUTIONFILESTORAGE_S3_BUCKET: ${RUNDECK_PLUGIN_EXECUTIONFILESTORAGE_S3_BUCKET}
+    # RUNDECK_PLUGIN_EXECUTIONFILESTORAGE_S3_REGION: ${RUNDECK_PLUGIN_EXECUTIONFILESTORAGE_S3_REGION}
+    # RUNDECK_STORAGE_CONVERTER_1_CONFIG_PASSWORD: ${RUNDECK_STORAGE_PASSWORD}
+    # RUNDECK_CONFIG_STORAGE_CONVERTER_1_CONFIG_PASSWORD: ${RUNDECK_STORAGE_PASSWORD}
+    # RUNDECK_TOKENS_FILE: /home/rundeck/extra/tokens.properties
+
+  # Name of the secret containing SSH files to mount under ~/.ssh
+  # sshSecrets: "ssh-secret"
+
+  # Name of secret containing to mount under ~/.aws/
+  # awsConfigSecret: "aws-secret"
+
+  # Name of secret to mount under ~/.kube/
+  # kubeConfigSecret: "kube-secret"
+
+  # Name of secret containing additional sensitive Runtime environment variables (eg: RUNDECK_DATABASE_PASSWORD)
+  # See https://hub.docker.com/r/rundeck/rundeck/
+  # envSecret: "env-secret"
+
+  # Name of secret containing additional files to mount into Rundeck's ~/extra directory.
+  # This can be useful for populating a file you reference with RUNDECK_TOKENS_FILE above.
+  # extraConfigSecret: "extra-secret"
+
+nameOverride: ""
+fullnameOverride: ""
+
+service:
+  type: ClusterIP
+  port: 80
+    
+persistence:
+  claims:
+    
+      # Template
+      # - name: data
+      #   volumeName: data 
+      #   accessMode: ReadWriteOnce
+      #   size: 20G
+      #   storageClass: null
+
+    - name: rundeck
+      volumeName: data 
+      accessMode: ReadWriteOnce
+      size: 20G
+      storageClass: null
+
+    - name: plugins
+      accessMode: ReadWriteOnce
+      size: 1G
+      storageClass: null
+
+  create: true # Create a PVC for data
+  enabled: true # Enable persistence using PVC
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name:
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+    # kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  domain: 
+  paths:
+    - path: /
+      pathType: ImplementationSpecific
+  tls:
+    enabled: false
+    secretName: rundeck-ssl
+
+resources: {}
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+nginxConfOverride: ""
+  # # This example adds configuration for external auth e.g. via oauth2-proxy
+  # # It also demonstrates templating in another arbitrary value (authRoles)
+  # # to create a map of external users to rundeck roles
+  # events {
+  #   worker_connections  1024;
+  # }
+  # http {
+  #   map $http_x_forwarded_user $x_forwarded_roles {
+  # {{- .Values.authRoles | nindent 4 }}
+  #   }
+  #   server {
+  #     location /metrics/ {
+  #       proxy_pass http://localhost:4440;
+  #       proxy_set_header Host $http_host;
+  #       proxy_set_header X-Forwarded-User metrics;
+  #       proxy_set_header X-Forwarded-Roles user;
+  #     }
+  #     location / {
+  #       recursive_error_pages on;
+  #       proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+  #       proxy_set_header X-Forwarded-Proto $scheme;
+  #       proxy_set_header X-Forwarded-Roles $x_forwarded_roles;
+  #       proxy_set_header User-Agent $http_user_agent;
+  #       proxy_pass http://localhost:4440;
+  #     }
+  #   }
+  # }
+
+volumeMounts:
+    # Certifique-se de que o .Values.persistence.claims.name ou volumeName corresponde ao nome do volume
+  - name: data
+    mountPath: /home/rundeck/server/data
+  - name: plugins
+    mountPath: /home/rundeck/libext
+
+volumes: ""
+
+# initContainers can be used to download plugins or customise your rundeck installation
+# initContainers:
+#   - name: download-plugins
+#     image: alpine:3.8
+#     command: [sh, -c]
+#     args:
+#       - wget https://github.com/rundeck-plugins/kubernetes/releases/download/2.0.13/kubernetes-2.0.13.zip -O /home/rundeck/libext/kubernetes-plugin-2.0.13.zip
+#     volumeMounts:
+#       - mountPath: /home/rundeck/libext/
+#         name: plugins
+
+sideCars: ""
+
