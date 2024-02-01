@@ -1,0 +1,103 @@
+apiVersion: v1
+entries:
+  areacolaborador:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-02-01T13:55:54.993234778-03:00"
+    description: A Helm chart for Kubernetes
+    digest: e6869dfdfdb1c6b798be24dc6816d12f5874cb11674a6e9ea442604b082e320e
+    name: areacolaborador
+    type: application
+    urls:
+    - https://github.com/Tech-Preta/charts/areacolaborador-0.1.0.tgz
+    version: 0.1.0
+  httpd:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-02-01T13:55:54.994005781-03:00"
+    description: Meu primeiro chart.
+    digest: 308febfaf1e2bf282dc64aa7270a3eda2dfaf613591b4a0950ae6a6051d9ba52
+    icon: https://terminalroot.com.br/assets/img/shell-script/gnuapache.jpg
+    name: httpd
+    type: application
+    urls:
+    - https://github.com/Tech-Preta/charts/httpd-1.0.0.tgz
+    version: 1.0.0
+  ocs:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-02-01T13:55:54.998815096-03:00"
+    dependencies:
+    - condition: mysql.enabled
+      name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.4.4
+    description: OCS Inventory
+    digest: 10c9dc998465153e57db6b2bb04226e33d5101c6ba058342ffc1161d2af8f955
+    icon: https://upload.wikimedia.org/wikipedia/commons/8/8f/Logotipo_Nasajon_vertical.png
+    name: ocs
+    sources:
+    - https://github.com/NasajonSRE/helm.git
+    - http://wiki.ocsinventory-ng.org
+    type: application
+    urls:
+    - https://github.com/Tech-Preta/charts/ocs-0.1.0.tgz
+    version: 0.1.0
+  rundeck:
+  - apiVersion: v1
+    appVersion: 4.15.0
+    created: "2024-02-01T13:55:54.999581396-03:00"
+    description: A Rundeck chart for Kubernetes
+    digest: b8542824e0a7f44e51dfecd4c3e608d576b2074fb36e5ecfec09f5018db57be7
+    home: https://github.com/rundeck/rundeck
+    icon: https://sysadminxpert.com/wp-content/uploads/2018/07/rundeck-logo-1.jpg
+    keywords:
+    - rundeck
+    - jobs
+    - automation
+    - operations
+    name: rundeck
+    sources:
+    - https://github.com/rundeck/rundeck
+    urls:
+    - https://github.com/Tech-Preta/charts/rundeck-4.15.0.tgz
+    version: 4.15.0
+  rundeck-exporter:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-02-01T13:55:55.000273065-03:00"
+    description: Rundeck Metrics Exporter for Prometheus.
+    digest: ac3cc779a8e5f6eea479ec8d20aa5f121fbdd825ae769f45b73055690582ecaa
+    icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKePwGb88xL3gFzccHHlCyYI7jWU-phaAaQRPRXfHB6ofpwBgLdVbNtabF-YRyccl85Rk&usqp=CAU
+    keywords:
+    - rundeck-exporter
+    maintainers:
+    - email: natalia.granato@jackexperts.com
+      name: Natália Granato
+    name: rundeck-exporter
+    type: application
+    urls:
+    - https://github.com/Tech-Preta/charts/rundeck-exporter-0.1.8.tgz
+    version: 0.1.8
+  trudesk:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-02-01T13:55:55.008842914-03:00"
+    dependencies:
+    - condition: elasticsearch.enabled
+      name: elasticsearch
+      repository: https://helm.elastic.co
+      version: 8.5.1
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.6.0
+    description: Helm Chart Trudesk
+    digest: 565afff13e16cd1f9d07f4134b78f3061a636850bfe6deec88d43c6d5e02ccb5
+    icon: https://docs.trudesk.io/v1.2/img/defaultLogoDark.png
+    name: trudesk
+    type: application
+    urls:
+    - https://github.com/Tech-Preta/charts/trudesk-1.0.0.tgz
+    version: 1.0.0
+generated: "2024-02-01T13:55:54.992462157-03:00"

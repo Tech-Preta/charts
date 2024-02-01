@@ -1,0 +1,102 @@
+replicaCount: 1
+
+image:
+  repository: polonel/trudesk
+  pullPolicy: Always
+  tag: "1.2.6"
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  create: true
+  annotations: {}
+  name: ""
+
+podAnnotations: {}
+
+podSecurityContext: {}
+
+securityContext: {}
+
+env:   
+  - name: NODE_ENV
+    value: production
+  - name: TRUDESK_DOCKER
+    value: "true"
+  - name: TD_MONGODB_DATABASE
+    value: "trudesk"
+  - name: USE_XFORWARDIP
+    value: "true"
+
+persistence:
+  enabled: true
+  size: 2Gi
+  accessModes: 
+  - "ReadWriteOnce"
+
+service:
+  type: ClusterIP
+  port: 80
+  targetPort: 8118
+
+ingress:
+  enabled: true
+  className: ""
+  annotations: {}
+  hosts: 
+  - host: example.local
+    paths:
+      - path: /
+        pathType: ImplementationSpecific
+  tls: []
+    # - secretName: trudesk-tls
+    #   hosts:
+    #     - example.local
+
+resources: {}
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
+
+# livenessProbe: 
+  # failureThreshold: 1
+  # httpGet:
+  #   path: /
+  #   port: http
+  #   scheme: HTTP
+  # periodSeconds: 20
+  # successThreshold: 1
+  # timeoutSeconds: 15
+
+# readinessProbe: 
+#   failureThreshold: 6
+#   initialDelaySeconds: 5
+#   httpGet:
+#     path: /
+#     port: http
+#     scheme: HTTP
+#   periodSeconds: 10
+#   successThreshold: 5
+#   timeoutSeconds: 1
+
+elasticsearch:
+  enabled: true
+  masterService: elasticsearch-master
+  replicas: 1
+  minimumMasterNodes: 1
+
+mongodb:
+  enabled: true
+  auth:
+    enabled: false

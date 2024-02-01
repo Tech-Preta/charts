@@ -1,0 +1,16 @@
+apiVersion: v2
+appVersion: 1.0.0
+dependencies:
+- condition: elasticsearch.enabled
+  name: elasticsearch
+  repository: https://helm.elastic.co
+  version: 8.5.1
+- condition: mongodb.enabled
+  name: mongodb
+  repository: https://charts.bitnami.com/bitnami
+  version: 13.6.0
+description: Helm Chart Trudesk
+icon: https://docs.trudesk.io/v1.2/img/defaultLogoDark.png
+name: trudesk
+type: application
+version: 1.0.0

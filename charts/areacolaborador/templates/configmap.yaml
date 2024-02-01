@@ -1,0 +1,12 @@
+{{- if .Values.configMap.enabled -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ .Values.configMap.name | default (include "areacolaborador.fullname" .) }}
+  labels:
+    {{- include "areacolaborador.labels" . | nindent 4 }}
+{{- with .Values.configMap.data }}
+data:
+  {{- toYaml . | nindent 2 }}
+{{- end }}
+{{- end -}}

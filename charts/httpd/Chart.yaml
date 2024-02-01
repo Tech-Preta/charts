@@ -1,0 +1,7 @@
+apiVersion: v2
+appVersion: 1.0.0
+description: Meu primeiro chart.
+icon: https://terminalroot.com.br/assets/img/shell-script/gnuapache.jpg
+name: httpd
+type: application
+version: 1.0.0

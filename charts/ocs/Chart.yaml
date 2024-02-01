@@ -1,0 +1,15 @@
+apiVersion: v2
+appVersion: 1.16.0
+dependencies:
+- condition: mysql.enabled
+  name: mysql
+  repository: https://charts.bitnami.com/bitnami
+  version: 9.4.4
+description: OCS Inventory
+icon: https://upload.wikimedia.org/wikipedia/commons/8/8f/Logotipo_Nasajon_vertical.png
+name: ocs
+sources:
+- https://github.com/NasajonSRE/helm.git
+- http://wiki.ocsinventory-ng.org
+type: application
+version: 0.1.0
