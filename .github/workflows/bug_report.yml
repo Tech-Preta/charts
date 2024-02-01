@@ -1,0 +1,29 @@
+name: Reportar Problema
+
+on:
+  issues:
+    types:
+      - opened
+      - edited
+
+jobs:
+  bug_report:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Adquirir informações do problema
+      id: gather_info
+      run: |
+        echo "## Descrição do Problema\n$ISSUE_BODY" > issue_details.md
+        echo "\n\n## Passos para Reproduzir\n$ISSUE_COMMENT_BODY" >> issue_details.md
+        echo "\n\n## Comportamento Esperado\n$ISSUE_COMMENT_BODY" >> issue_details.md
+        echo "\n\n## Comportamento Atual\n$ISSUE_COMMENT_BODY" >> issue_details.md
+        echo "\n\n## Informações Adicionais\n$ISSUE_COMMENT_BODY" >> issue_details.md
+
+    - name: Criar novo comentário com informações formatadas
+      run: |
+        cat issue_details.md
+        echo "\n\n---\n\n**Esta é uma resposta automática.**\n\n Obrigado por relatar este problema! Nossa equipe revisará e responderá assim que possível."
+
+      env:
+        GITHUB_TOKEN: ${{ secrets.USER_TOKEN }}
