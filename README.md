@@ -1,32 +1,38 @@
-# Helm Charts da Natalia Granato
-Este repositório contém uma coleção de Helm Charts criados ou com contribuições de Natalia Granato para diferentes aplicações. Cada diretório neste repositório contém um Chart diferente.
+- # Natalia Granato's Helm Charts Collection
 
-## Como usar estes charts
-Para usar estes charts, você precisa ter o Helm instalado em seu ambiente Kubernetes. Se você não tem o Helm instalado, siga as instruções na documentação oficial para instalá-lo.
+Este repositório abriga uma coleção de Helm Charts criados ou com contribuições de Natalia Granato para diversas aplicações. Helm Charts são uma maneira eficaz de definir, instalar e atualizar até mesmo as aplicações mais complexas no Kubernetes.
 
-Depois de instalar o Helm, adicione o repositório de charts da Natalia Granato com o seguinte comando:
+## Como usar os Helm Charts 
+1. Certifique-se de ter o Helm instalado. Se ainda não tiver, siga as [instruções de instalação do Helm](https://helm.sh/docs/intro/install/) . 
+2. Faça o clone do repositório:
 
+```bash
+git clone https://github.com/Tech-Preta/charts.git
+``` 
+
+3. Navegue pelo repositório para encontrar o Helm Chart desejado. 
+4. Instale o Helm Chart usando o comando `helm install`:
+
+```bash
+helm install nome-da-release -n nome-da-namespace . # O ponto ao final indica que você está no diretório do chart que será instalado
 ```
-helm repo add nataliagranato https://github.com/nataliagranato/charts
-```
-Você pode então pesquisar os charts disponíveis usando o comando helm search repo nataliagranato.
 
-Para instalar um chart, use o comando helm install seguido pelo nome do chart que você deseja instalar e as opções necessárias. Por exemplo, para instalar o chart meu-chart, use o seguinte comando:
-
-```
-helm install meu-chart nataliagranato/meu-chart
-```
-Para obter mais informações sobre como usar o Helm, consulte a documentação oficial.
+5. Personalize a instalação conforme necessário, passando valores adicionais via values.yaml ou flags de linha de comando.
 
 ## Charts disponíveis
-* [httpd](https://github.com/nataliagranato/nataliagranato-helm/tree/main/charts/httpd): uma calculadora que usa apache2.
-* [rundeck-exporter](https://github.com/nataliagranato/helm-charts/tree/main/charts/rundeck-exporter): uma aplicação que coleta métricas do Rundeck e exporta para o Prometheus.
-* [trudesk](https://github.com/nataliagranato/helm-charts/tree/main/charts/trudesk): o Trudesk é um software de serviço de help desk e gerenciamento de tickets de código aberto.
-* [area-colaborador](https://github.com/nataliagranato/helm-charts/tree/main/charts/areacolaborador): um dashboard para acompanhar chamados, tickets e etc.
-* [ocs](https://github.com/nataliagranato/helm-charts/tree/main/charts/ocs): é um software de código aberto projetado para ajudar as organizações a gerenciar ativos de TI.
+* [httpd](https://github.com/Tech-Preta/charts/tree/main/charts/httpd): uma calculadora que usa apache2.
+* [rundeck-exporter](https://github.com/Tech-Preta/charts/tree/main/charts/rundeck-exporter): uma aplicação que coleta métricas do Rundeck e exporta para o Prometheus.
+* [trudesk](https://github.com/Tech-Preta/charts/tree/main/charts/trudesk): o Trudesk é um software de serviço de help desk e gerenciamento de tickets de código aberto.
+* [area-colaborador](https://github.com/Tech-Preta/charts/tree/main/charts/areacolaborador): um dashboard para acompanhar chamados, tickets e etc.
+* [ocs](https://github.com/Tech-Preta/charts/tree/main/charts/ocs): é um software de código aberto projetado para ajudar as organizações a gerenciar ativos de TI.
+* [rundeck](https://github.com/Tech-Preta/charts/tree/main/charts/rundeck): é uma plataforma de automação de operações de TI (Ops) de código aberto.
 
+...
+## Contribuições
 
+Contribuições são bem-vindas! Se você tiver melhorias, correções ou novos Helm Charts para adicionar, sinta-se à vontade para abrir uma *issue* ou enviar um *pull request*.
 
+## Licença
 
-## Contribuindo
-Se você deseja contribuir para este repositório, por favor, faça um fork deste repositório, faça suas alterações e envie uma pull request. As contribuições são sempre bem-vindas!
+Este projeto é licenciado sob a [GNU General Public License v3.0](https://github.com/Tech-Preta/charts/blob/gh-pages/LICENSE) . Consulte o arquivo `LICENSE` para obter mais detalhes.---
+
