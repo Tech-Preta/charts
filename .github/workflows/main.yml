@@ -21,6 +21,11 @@ jobs:
           git config user.name "nataliagranato"
           git config user.email "nataliagranato@ufmg.br"
 
+      - name: Update Dependencies
+        run: |
+          cd charts/trudesk
+          helm dependency update
+
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
         env:
