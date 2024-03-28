@@ -1,0 +1,24 @@
+apiVersion: v2
+name: super-mario
+description: Um gráfico Helm para Kubernetes
+icon: https://observatoriodegames.uol.com.br/wp-content/uploads/2023/04/Super-Mario.jpg
+# Um gráfico pode ser um gráfico de 'aplicativo' ou um gráfico de 'biblioteca'.
+#
+# Gráficos de aplicativo são uma coleção de modelos que podem ser empacotados em arquivos
+# versionados para serem implantados.
+#
+# Gráficos de biblioteca fornecem utilitários ou funções úteis para o desenvolvedor do gráfico. Eles são incluídos como
+# uma dependência de gráficos de aplicativo para injetar esses utilitários e funções no pipeline de renderização. Gráficos de biblioteca não definem
+# nenhum modelo e, portanto, não podem ser implantados.
+type: application
+
+# Esta é a versão do gráfico. Este número de versão deve ser incrementado cada vez que você fizer alterações
+# no gráfico e em seus modelos, incluindo a versão do aplicativo.
+# Espera-se que as versões sigam o Versionamento Semântico (https://semver.org/)
+version: 0.1.0
+
+# Este é o número de versão do aplicativo sendo implantado. Este número de versão deve ser
+# incrementado cada vez que você fizer alterações no aplicativo. As versões não são esperadas para
+# seguir o Versionamento Semântico. Elas devem refletir a versão que o aplicativo está usando.
+# É recomendado usar aspas.
+appVersion: "1.0.0"

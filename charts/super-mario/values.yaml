@@ -1,0 +1,107 @@
+# Valores padrão para super-mario.
+# Este é um arquivo formatado em YAML.
+# Declare variáveis para serem passadas para seus templates.
+
+replicaCount: 1
+
+image:
+  repository: nirmalnaveen/supermario
+  pullPolicy: IfNotPresent
+  # Substitui a tag da imagem, cujo padrão é a appVersion do chart.
+  tag: latest
+
+imagePullSecrets: []
+nameOverride: ""
+fullnameOverride: ""
+
+serviceAccount:
+  # Especifica se uma conta de serviço deve ser criada
+  create: true
+  # Montar automaticamente as credenciais da API de uma conta de serviço?
+  automount: true
+  # Anotações a serem adicionadas à conta de serviço
+  annotations: {}
+  # O nome da conta de serviço a ser usada.
+  # Se não for definido e create for true, um nome é gerado usando o template fullname
+  name: ""
+
+podAnnotations: {}
+podLabels: {}
+
+podSecurityContext: {}
+# fsGroup: 2000
+
+securityContext: {}
+# capabilities:
+#   drop:
+#   - ALL
+# readOnlyRootFilesystem: true
+# runAsNonRoot: true
+# runAsUser: 1000
+
+service:
+  type: ClusterIP
+  port: 80
+
+ingress:
+  enabled: false
+  className: ""
+  annotations: {}
+  # kubernetes.io/ingress.class: nginx
+  # kubernetes.io/tls-acme: "true"
+  hosts:
+  - host: chart-example.local
+    paths:
+    - path: /
+      pathType: ImplementationSpecific
+  tls: []
+  #  - secretName: chart-example-tls
+  #    hosts:
+  #      - chart-example.local
+
+resources: {}
+# Normalmente, recomendamos não especificar recursos padrão e deixar isso como uma escolha consciente
+# para o usuário. Isso também aumenta as chances de os charts serem executados em ambientes com poucos
+# recursos, como o Minikube. Se você deseja especificar recursos, descomente as linhas a seguir,
+# ajuste-as conforme necessário e remova as chaves após 'resources:'.
+# limits:
+#   cpu: 100m
+#   memory: 128Mi
+# requests:
+#   cpu: 100m
+#   memory: 128Mi
+
+livenessProbe:
+  httpGet:
+    path: /
+    port: http
+readinessProbe:
+  httpGet:
+    path: /
+    port: http
+
+autoscaling:
+  enabled: false
+  minReplicas: 1
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  # targetMemoryUtilizationPercentage: 80
+
+# Volumes adicionais na definição de Deployment de saída.
+volumes: []
+# - name: foo
+#   secret:
+#     secretName: mysecret
+#     optional: false
+
+# VolumeMounts adicionais na definição de Deployment de saída.
+volumeMounts: []
+# - name: foo
+#   mountPath: "/etc/foo"
+#   readOnly: true
+
+nodeSelector: {}
+
+tolerations: []
+
+affinity: {}
