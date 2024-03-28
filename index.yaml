@@ -79,6 +79,18 @@ entries:
     urls:
     - https://github.com/Tech-Preta/charts/rundeck-exporter-0.1.8.tgz
     version: 0.1.8
+  super-mario:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-03-28T12:27:14.627589627Z"
+    description: Um gráfico Helm para Kubernetes
+    digest: 3b73e743a5e6ba63852516230bacdfbb02e025515178d0db4fc5afd1b5beb8e5
+    icon: https://observatoriodegames.uol.com.br/wp-content/uploads/2023/04/Super-Mario.jpg
+    name: super-mario
+    type: application
+    urls:
+    - https://github.com/Tech-Preta/charts/releases/download/super-mario-0.1.0/super-mario-0.1.0.tgz
+    version: 0.1.0
   trudesk:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -100,4 +112,4 @@ entries:
     urls:
     - https://github.com/Tech-Preta/charts/trudesk-1.0.0.tgz
     version: 1.0.0
-generated: "2024-02-01T13:55:54.992462157-03:00"
+generated: "2024-03-28T12:27:14.62759689Z"
