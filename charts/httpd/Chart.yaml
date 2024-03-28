@@ -2,6 +2,9 @@ apiVersion: v2
 appVersion: 1.0.0
 description: Meu primeiro chart.
 icon: https://terminalroot.com.br/assets/img/shell-script/gnuapache.jpg
+maintainers:
+- email: contato@nataliagranato.xyz
+  name: Natália Granato
 name: httpd
 type: application
 version: 1.0.0

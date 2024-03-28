@@ -12,6 +12,10 @@ icon: https://observatoriodegames.uol.com.br/wp-content/uploads/2023/04/Super-Ma
 # nenhum modelo e, portanto, não podem ser implantados.
 type: application
 
+maintainers:
+- email: contato@nataliagranato.xyz
+  name: Natália Granato
+
 # Esta é a versão do gráfico. Este número de versão deve ser incrementado cada vez que você fizer alterações
 # no gráfico e em seus modelos, incluindo a versão do aplicativo.
 # Espera-se que as versões sigam o Versionamento Semântico (https://semver.org/)
