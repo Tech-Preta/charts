@@ -1,0 +1,124 @@
+apiVersion: v1
+entries:
+  areacolaborador:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-07-01T00:16:03.334905003-03:00"
+    description: A Helm chart for Kubernetes
+    digest: 9fe800f67f738c56cfa6267c74b61048ae05735f7344f64d291eb27b243f5e9e
+    maintainers:
+    - email: contato@nataliagranato.xyz
+      name: Natália Granato
+    name: areacolaborador
+    type: application
+    urls:
+    - https://github.com/Tech-Preta/charts/areacolaborador-0.1.0.tgz
+    version: 0.1.0
+  httpd:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-07-01T00:16:03.33552018-03:00"
+    description: Meu primeiro chart.
+    digest: 76f7b3c814d668fe2039f65f4cd40586ccc0bef39bbb3465904ec94d58cf1d30
+    icon: https://terminalroot.com.br/assets/img/shell-script/gnuapache.jpg
+    maintainers:
+    - email: contato@nataliagranato.xyz
+      name: Natália Granato
+    name: httpd
+    type: application
+    urls:
+    - https://github.com/Tech-Preta/charts/httpd-1.0.0.tgz
+    version: 1.0.0
+  ocs:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-07-01T00:16:03.339690358-03:00"
+    dependencies:
+    - condition: mysql.enabled
+      name: mysql
+      repository: https://charts.bitnami.com/bitnami
+      version: 9.4.4
+    description: OCS Inventory
+    digest: f0bac584bb9205ff9fcadd7c2c566312a44fb22b7e192bfa3b738b77b8ff16a2
+    icon: https://upload.wikimedia.org/wikipedia/commons/8/8f/Logotipo_Nasajon_vertical.png
+    name: ocs
+    sources:
+    - https://github.com/NasajonSRE/helm.git
+    - http://wiki.ocsinventory-ng.org
+    type: application
+    urls:
+    - https://github.com/Tech-Preta/charts/ocs-0.1.0.tgz
+    version: 0.1.0
+  rundeck:
+  - apiVersion: v1
+    appVersion: 4.15.0
+    created: "2024-07-01T00:16:03.340354547-03:00"
+    description: A Rundeck chart for Kubernetes
+    digest: ec1a7b837840b8d6293f849f985bf80f39db53699eb674627bcf4db3c2847c61
+    home: https://github.com/rundeck/rundeck
+    icon: https://sysadminxpert.com/wp-content/uploads/2018/07/rundeck-logo-1.jpg
+    keywords:
+    - rundeck
+    - jobs
+    - automation
+    - operations
+    name: rundeck
+    sources:
+    - https://github.com/rundeck/rundeck
+    urls:
+    - https://github.com/Tech-Preta/charts/rundeck-4.15.0.tgz
+    version: 4.15.0
+  rundeck-exporter:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2024-07-01T00:16:03.340993076-03:00"
+    description: Rundeck Metrics Exporter for Prometheus.
+    digest: fdab24aa83a891be040d996968bc9c688b22f1b304c106f0ac636222f8a23911
+    icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKePwGb88xL3gFzccHHlCyYI7jWU-phaAaQRPRXfHB6ofpwBgLdVbNtabF-YRyccl85Rk&usqp=CAU
+    keywords:
+    - rundeck-exporter
+    maintainers:
+    - email: contato@nataliagranato.xyz
+      name: Natália Granato
+    name: rundeck-exporter
+    type: application
+    urls:
+    - https://github.com/Tech-Preta/charts/rundeck-exporter-0.1.8.tgz
+    version: 0.1.8
+  super-mario:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-07-01T00:16:03.341497405-03:00"
+    description: Um gráfico Helm para Kubernetes
+    digest: fae0d9405186726c43f0800da557ab0eabd73b5e90481d1707b45dea549d2a69
+    icon: https://observatoriodegames.uol.com.br/wp-content/uploads/2023/04/Super-Mario.jpg
+    maintainers:
+    - email: contato@nataliagranato.xyz
+      name: Natália Granato
+    name: super-mario
+    type: application
+    urls:
+    - https://github.com/Tech-Preta/charts/super-mario-0.1.0.tgz
+    version: 0.1.0
+  trudesk:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2024-07-01T00:16:03.349961135-03:00"
+    dependencies:
+    - condition: elasticsearch.enabled
+      name: elasticsearch
+      repository: https://helm.elastic.co
+      version: 8.5.1
+    - condition: mongodb.enabled
+      name: mongodb
+      repository: https://charts.bitnami.com/bitnami
+      version: 13.6.0
+    description: Helm Chart Trudesk
+    digest: d0a6a938bbf33f9bdc7d535f891a2c611e9539845d5cab2a96aba7fc611ed8e7
+    icon: https://docs.trudesk.io/v1.2/img/defaultLogoDark.png
+    name: trudesk
+    type: application
+    urls:
+    - https://github.com/Tech-Preta/charts/trudesk-1.0.0.tgz
+    version: 1.0.0
+generated: "2024-07-01T00:16:03.334249374-03:00"
