@@ -1,4 +1,6 @@
-- # Natalia Granato's Helm Charts Collection
+# Natalia Granato's Helm Charts Collection
+
+[![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/techpreta)](https://artifacthub.io/packages/search?repo=techpreta)
 
 Este repositório abriga uma coleção de Helm Charts criados ou com contribuições de Natalia Granato para diversas aplicações. Helm Charts são uma maneira eficaz de definir, instalar e atualizar até mesmo as aplicações mais complexas no Kubernetes.
 
