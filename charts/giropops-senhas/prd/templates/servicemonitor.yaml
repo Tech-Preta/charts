@@ -1,0 +1,22 @@
+{{- if .Values.serviceMonitor.enabled -}}
+apiVersion: monitoring.coreos.com/v1
+kind: ServiceMonitor
+metadata:
+  name: {{ include "giropopsSenhas.fullname" . }}
+  labels:
+    {{- include "giropopsSenhas.labels" . | nindent 4 }}
+spec:
+  namespaceSelector:
+    matchNames:
+    - {{ .Values.serviceMonitor.giropopsSenhas.namespace | default "default-namespace" }}  # Use default if not set
+  selector:
+    matchLabels:
+      {{- include "giropopsSenhas.selectorLabels" . | nindent 6 }}
+  endpoints:
+    {{- range .Values.serviceMonitor.giropopsSenhas.endpoints }}
+    - port: {{ .port }}
+      path: {{ .path | default "/" }}  # Default path if not set
+      interval: {{ .interval | default "30s" }}  # Default interval if not set
+      scrapeTimeout: {{ .scrapeTimeout | default "10s" }}  # Default timeout if not set
+    {{- end }}
+{{- end -}}

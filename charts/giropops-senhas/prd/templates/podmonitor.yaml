@@ -1,0 +1,22 @@
+{{- if .Values.giropopsSenhas.podMonitor.enabled -}}
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: {{ include "giropopsSenhas.fullname" . }}
+  labels:
+    {{- include "giropopsSenhas.labels" . | nindent 4 }}
+spec:
+  selector:
+    matchLabels:
+      {{- include "giropopsSenhas.selectorLabels" . | nindent 6 }}
+  namespaceSelector:
+    matchNames:
+      - {{ .Values.giropopsSenhas.podMonitor.namespace | default "default-namespace" }}
+  podMetricsEndpoints:
+    {{- range .Values.giropopsSenhas.podMonitor.endpoints }}
+    - port: {{ .port | default "http" }}
+      path: {{ .path | default "/" }}
+      interval: {{ .interval | default "30s" }}
+      scrapeTimeout: {{ .scrapeTimeout | default "10s" }}
+    {{- end }}
+{{- end }}
