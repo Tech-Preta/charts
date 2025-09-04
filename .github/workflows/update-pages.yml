@@ -1,0 +1,46 @@
+name: Update GitHub Pages
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - '*.tgz'
+      - 'index.yaml'
+
+permissions:
+  contents: write
+
+jobs:
+  update-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Update GitHub Pages branch
+        run: |
+          # Create/switch to gh-pages branch
+          git checkout -B gh-pages
+          
+          # Keep only Helm repository files
+          find . -maxdepth 1 -type f \( -name "*.tgz" -o -name "index.yaml" -o -name ".nojekyll" \) -exec echo "Keeping {}" \;
+          
+          # Remove everything except Helm repository files
+          find . -maxdepth 1 -type f ! \( -name "*.tgz" -o -name "index.yaml" -o -name ".nojekyll" -o -name ".git*" \) -delete
+          find . -maxdepth 1 -type d ! \( -name "." -o -name ".git" \) -exec rm -rf {} + 2>/dev/null || true
+          
+          # Add and commit
+          git add -A
+          git commit -m "Update Helm repository $(date '+%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+          
+          # Push to gh-pages
+          git push origin gh-pages --force

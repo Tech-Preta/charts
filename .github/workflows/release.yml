@@ -9,8 +9,6 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
   release:
@@ -29,7 +27,7 @@ jobs:
       - name: Install Helm
         uses: azure/setup-helm@v4
         with:
-          version: v3.14.0
+          version: v3.14.1
 
       - name: Add dependency repositories
         run: |
@@ -37,46 +35,10 @@ jobs:
           helm repo add elastic https://helm.elastic.co
           helm repo update
 
-      - name: Package charts manually
-        run: |
-          mkdir -p .cr-release-packages
-          
-          # Package charts with Chart.yaml in root
-          for chart_dir in charts/*/; do
-            if [ -f "$chart_dir/Chart.yaml" ]; then
-              echo "Packaging $chart_dir..."
-              helm package "$chart_dir" -d .cr-release-packages/
-            fi
-          done
-          
-          # Package giropops-senhas variants
-          for env in dev stg prd; do
-            if [ -f "charts/giropops-senhas/$env/Chart.yaml" ]; then
-              echo "Packaging charts/giropops-senhas/$env..."
-              helm package "charts/giropops-senhas/$env/" -d .cr-release-packages/
-            fi
-          done
-          
-          echo "Packaged charts:"
-          ls -la .cr-release-packages/
-
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
-        env:
-          CR_TOKEN: "${{ secrets.USER_TOKEN }}"
         with:
           charts_dir: charts
-          config: .github/configs/cr.yaml
           skip_existing: true
-          skip_packaging: true
-
-  deploy-pages:
-    needs: release
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        env:
+          CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
