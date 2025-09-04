@@ -19,7 +19,7 @@ maintainers:
 # Esta é a versão do gráfico. Este número de versão deve ser incrementado cada vez que você fizer alterações
 # no gráfico e em seus modelos, incluindo a versão do aplicativo.
 # Espera-se que as versões sigam o Versionamento Semântico (https://semver.org/)
-version: 0.1.0
+version: 0.1.1
 
 # Este é o número de versão do aplicativo sendo implantado. Este número de versão deve ser
 # incrementado cada vez que você fizer alterações no aplicativo. As versões não são esperadas para

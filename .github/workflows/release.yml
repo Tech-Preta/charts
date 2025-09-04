@@ -37,6 +37,29 @@ jobs:
           helm repo add elastic https://helm.elastic.co
           helm repo update
 
+      - name: Package charts manually
+        run: |
+          mkdir -p .cr-release-packages
+          
+          # Package charts with Chart.yaml in root
+          for chart_dir in charts/*/; do
+            if [ -f "$chart_dir/Chart.yaml" ]; then
+              echo "Packaging $chart_dir..."
+              helm package "$chart_dir" -d .cr-release-packages/
+            fi
+          done
+          
+          # Package giropops-senhas variants
+          for env in dev stg prd; do
+            if [ -f "charts/giropops-senhas/$env/Chart.yaml" ]; then
+              echo "Packaging charts/giropops-senhas/$env..."
+              helm package "charts/giropops-senhas/$env/" -d .cr-release-packages/
+            fi
+          done
+          
+          echo "Packaged charts:"
+          ls -la .cr-release-packages/
+
       - name: Run chart-releaser
         uses: helm/chart-releaser-action@v1.6.0
         env:
@@ -44,6 +67,8 @@ jobs:
         with:
           charts_dir: charts
           config: .github/configs/cr.yaml
+          skip_existing: true
+          skip_packaging: true
 
   deploy-pages:
     needs: release

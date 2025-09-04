@@ -1,0 +1,110 @@
+name: Manual Release Charts
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Release version (e.g., v2025.09.04)'
+        required: true
+        default: 'v2025.09.04'
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+jobs:
+  package-and-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure Git
+        run: |
+          git config user.name "$GITHUB_ACTOR"
+          git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
+      - name: Install Helm
+        uses: azure/setup-helm@v4
+        with:
+          version: v3.14.0
+
+      - name: Add dependency repositories
+        run: |
+          helm repo add bitnami https://charts.bitnami.com/bitnami
+          helm repo add elastic https://helm.elastic.co
+          helm repo update
+
+      - name: Package all charts
+        run: |
+          echo "Packaging charts..."
+          
+          # Package standard charts
+          for chart_dir in charts/*/; do
+            if [ -f "$chart_dir/Chart.yaml" ]; then
+              echo "Packaging $chart_dir..."
+              helm package "$chart_dir" --destination .
+            fi
+          done
+          
+          # Package giropops-senhas variants
+          for env in dev stg prd; do
+            if [ -f "charts/giropops-senhas/$env/Chart.yaml" ]; then
+              echo "Packaging charts/giropops-senhas/$env..."
+              helm package "charts/giropops-senhas/$env/" --destination .
+            fi
+          done
+          
+          echo "Generated packages:"
+          ls -la *.tgz
+
+      - name: Update Helm repository index
+        run: |
+          helm repo index . --url https://tech-preta.github.io/charts/
+          echo "Index updated successfully"
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        with:
+          tag: ${{ github.event.inputs.version }}
+          name: Release ${{ github.event.inputs.version }}
+          body: |
+            ## 📦 Charts Updated
+            
+            This release includes the following Helm charts:
+            
+            - **giropops-senhas-dev** v0.1.0 - Ambiente de desenvolvimento
+            - **giropops-senhas-stg** v0.1.0 - Ambiente de staging  
+            - **giropops-senhas-prd** v0.1.0 - Ambiente de produção
+            - **rundeck-exporter** v0.1.9 - Exportador de métricas do Rundeck
+            - **super-mario** v0.1.1 - Jogo Super Mario Bros
+            - **trudesk** v1.0.0 - Sistema de helpdesk
+            
+            ## 🚀 Installation
+            
+            ```bash
+            helm repo add techpreta https://tech-preta.github.io/charts/
+            helm repo update
+            helm install my-release techpreta/<chart-name>
+            ```
+            
+            ## 📚 Documentation
+            
+            Full documentation available at: https://github.com/Tech-Preta/charts/tree/main/docs
+          artifacts: "*.tgz,index.yaml"
+          token: ${{ secrets.USER_TOKEN }}
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload to GitHub Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
