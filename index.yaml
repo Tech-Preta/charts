@@ -11,6 +11,90 @@ entries:
     urls:
     - https://github.com/Tech-Preta/charts/areacolaborador-0.1.0.tgz
     version: 0.1.0
+  giropops-senhas-dev:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-09-04T19:25:40.953433456Z"
+    description: Um pacote da aplicação giropops-senhas para Kubernetes - ambiente
+      de desenvolvimento.
+    digest: efa95ff6568a7a3080b69e5d75c298998d4cce0a48b7e4890abcb1b9c689bf8a
+    home: https://github.com/Tech-Preta/charts
+    icon: https://raw.githubusercontent.com/Tech-Preta/giropops-senhas/main/static/linuxtips-logo.png
+    keywords:
+    - giropops
+    - senhas
+    - passwords
+    - generator
+    - linuxtips
+    maintainers:
+    - email: contato@nataliagranato.xyz
+      name: Natália Granato
+      url: https://github.com/nataliagranato
+    name: giropops-senhas-dev
+    sources:
+    - https://github.com/Tech-Preta/giropops-senhas
+    - https://github.com/Tech-Preta/charts
+    type: application
+    urls:
+    - giropops-senhas-dev-0.1.0.tgz
+    version: 0.1.0
+  giropops-senhas-prd:
+  - annotations:
+      catalog.cattle.io/display-name: Giropops Senhas - LINUXtips
+      catalog.cattle.io/os: linux
+    apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-09-04T19:25:41.083492173Z"
+    description: Um pacote da aplicação giropops-senhas para Kubernetes - ambiente
+      de produção.
+    digest: 4c9a75d3f76386b2e04b68049cc1cc0d6a2d32200b77a3dfd0b5ac2ded6476a4
+    home: https://github.com/Tech-Preta/charts
+    icon: https://raw.githubusercontent.com/Tech-Preta/giropops-senhas/main/static/linuxtips-logo.png
+    keywords:
+    - giropops
+    - senhas
+    - passwords
+    - generator
+    - linuxtips
+    maintainers:
+    - email: contato@nataliagranato.xyz
+      name: Natália Granato
+      url: https://github.com/nataliagranato
+    name: giropops-senhas-prd
+    sources:
+    - https://github.com/Tech-Preta/giropops-senhas
+    - https://github.com/Tech-Preta/charts
+    type: application
+    urls:
+    - giropops-senhas-prd-0.1.0.tgz
+    version: 0.1.0
+  giropops-senhas-stg:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-09-04T19:25:41.212599551Z"
+    description: Um pacote da aplicação giropops-senhas para Kubernetes - ambiente
+      de staging.
+    digest: 52078bd51bb6895345206c18895b95a8f380869fc4b0364ed2a30dfa8a151f2f
+    home: https://github.com/Tech-Preta/charts
+    icon: https://raw.githubusercontent.com/Tech-Preta/giropops-senhas/main/static/linuxtips-logo.png
+    keywords:
+    - giropops
+    - senhas
+    - passwords
+    - generator
+    - linuxtips
+    maintainers:
+    - email: contato@nataliagranato.xyz
+      name: Natália Granato
+      url: https://github.com/nataliagranato
+    name: giropops-senhas-stg
+    sources:
+    - https://github.com/Tech-Preta/giropops-senhas
+    - https://github.com/Tech-Preta/charts
+    type: application
+    urls:
+    - giropops-senhas-stg-0.1.0.tgz
+    version: 0.1.0
   httpd:
   - apiVersion: v2
     appVersion: 1.0.0
@@ -65,6 +149,22 @@ entries:
   rundeck-exporter:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2025-09-04T19:25:41.349627188Z"
+    description: Rundeck Metrics Exporter for Prometheus.
+    digest: 89d4dd2a84a99dda98d106a57c641957366f82707d5b70a7f19598f2ed85ce61
+    icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKePwGb88xL3gFzccHHlCyYI7jWU-phaAaQRPRXfHB6ofpwBgLdVbNtabF-YRyccl85Rk&usqp=CAU
+    keywords:
+    - rundeck-exporter
+    maintainers:
+    - email: contato@nataliagranato.xyz
+      name: Natália Granato
+    name: rundeck-exporter
+    type: application
+    urls:
+    - rundeck-exporter-0.1.9.tgz
+    version: 0.1.9
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2024-02-01T13:55:55.000273065-03:00"
     description: Rundeck Metrics Exporter for Prometheus.
     digest: ac3cc779a8e5f6eea479ec8d20aa5f121fbdd825ae769f45b73055690582ecaa
@@ -80,6 +180,20 @@ entries:
     - https://github.com/Tech-Preta/charts/rundeck-exporter-0.1.8.tgz
     version: 0.1.8
   super-mario:
+  - apiVersion: v2
+    appVersion: 1.0.0
+    created: "2025-09-04T19:25:41.50882967Z"
+    description: Um gráfico Helm para Kubernetes
+    digest: 3f001751a9d66da49b56b1513283803f7460ae6f91a0a0dde137b9811af42dfe
+    icon: https://observatoriodegames.uol.com.br/wp-content/uploads/2023/04/Super-Mario.jpg
+    maintainers:
+    - email: contato@nataliagranato.xyz
+      name: Natália Granato
+    name: super-mario
+    type: application
+    urls:
+    - super-mario-0.1.1.tgz
+    version: 0.1.1
   - apiVersion: v2
     appVersion: 1.0.0
     created: "2024-03-28T12:27:14.627589627Z"
@@ -112,4 +226,4 @@ entries:
     urls:
     - https://github.com/Tech-Preta/charts/trudesk-1.0.0.tgz
     version: 1.0.0
-generated: "2024-03-28T12:27:14.62759689Z"
+generated: "2025-09-04T19:25:41.642301049Z"
