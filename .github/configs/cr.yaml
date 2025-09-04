@@ -1,0 +1,6 @@
+owner: Tech-Preta
+git-repo: charts
+charts-repo: https://tech-preta.github.io/charts
+index-path: index.yaml
+packages-with-index: true
+release-name-template: "{{ .Name }}-{{ .Version }}"

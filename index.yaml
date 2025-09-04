@@ -1,79 +1,95 @@
 apiVersion: v1
 entries:
-  areacolaborador:
+  giropops-senhas-dev:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-07-01T00:21:56.918568177-03:00"
-    description: A Helm chart for Kubernetes
-    digest: 9fe800f67f738c56cfa6267c74b61048ae05735f7344f64d291eb27b243f5e9e
-    maintainers:
-    - email: contato@nataliagranato.xyz
-      name: Natália Granato
-    name: areacolaborador
-    type: application
-    urls:
-    - https://tech-preta.github.io/charts/areacolaborador-0.1.0.tgz
-    version: 0.1.0
-  httpd:
-  - apiVersion: v2
-    appVersion: 1.0.0
-    created: "2024-07-01T00:21:56.919299814-03:00"
-    description: Meu primeiro chart.
-    digest: 76f7b3c814d668fe2039f65f4cd40586ccc0bef39bbb3465904ec94d58cf1d30
-    icon: https://terminalroot.com.br/assets/img/shell-script/gnuapache.jpg
-    maintainers:
-    - email: contato@nataliagranato.xyz
-      name: Natália Granato
-    name: httpd
-    type: application
-    urls:
-    - https://tech-preta.github.io/charts/httpd-1.0.0.tgz
-    version: 1.0.0
-  ocs:
-  - apiVersion: v2
-    appVersion: 1.16.0
-    created: "2024-07-01T00:21:56.923974255-03:00"
-    dependencies:
-    - condition: mysql.enabled
-      name: mysql
-      repository: https://charts.bitnami.com/bitnami
-      version: 9.4.4
-    description: OCS Inventory
-    digest: f0bac584bb9205ff9fcadd7c2c566312a44fb22b7e192bfa3b738b77b8ff16a2
-    icon: https://upload.wikimedia.org/wikipedia/commons/8/8f/Logotipo_Nasajon_vertical.png
-    name: ocs
-    sources:
-    - https://github.com/NasajonSRE/helm.git
-    - http://wiki.ocsinventory-ng.org
-    type: application
-    urls:
-    - https://tech-preta.github.io/charts/ocs-0.1.0.tgz
-    version: 0.1.0
-  rundeck:
-  - apiVersion: v1
-    appVersion: 4.15.0
-    created: "2024-07-01T00:21:56.924635091-03:00"
-    description: A Rundeck chart for Kubernetes
-    digest: ec1a7b837840b8d6293f849f985bf80f39db53699eb674627bcf4db3c2847c61
-    home: https://github.com/rundeck/rundeck
-    icon: https://sysadminxpert.com/wp-content/uploads/2018/07/rundeck-logo-1.jpg
+    created: "2025-09-04T18:57:43.641188304Z"
+    description: Um pacote da aplicação giropops-senhas para Kubernetes - ambiente
+      de desenvolvimento.
+    digest: c3b419971478fe6f150d1cc823e25e30bb7acc28d9d8ca0bcec1df21be6ea888
+    home: https://github.com/Tech-Preta/charts
+    icon: https://raw.githubusercontent.com/Tech-Preta/giropops-senhas/main/static/linuxtips-logo.png
     keywords:
-    - rundeck
-    - jobs
-    - automation
-    - operations
-    name: rundeck
+    - giropops
+    - senhas
+    - passwords
+    - generator
+    - linuxtips
+    maintainers:
+    - email: contato@nataliagranato.xyz
+      name: Natália Granato
+      url: https://github.com/nataliagranato
+    name: giropops-senhas-dev
     sources:
-    - https://github.com/rundeck/rundeck
+    - https://github.com/Tech-Preta/giropops-senhas
+    - https://github.com/Tech-Preta/charts
+    type: application
     urls:
-    - https://tech-preta.github.io/charts/rundeck-4.15.0.tgz
-    version: 4.15.0
+    - https://tech-preta.github.io/charts/giropops-senhas-dev-0.1.0.tgz
+    version: 0.1.0
+  giropops-senhas-prd:
+  - annotations:
+      catalog.cattle.io/display-name: Giropops Senhas - LINUXtips
+      catalog.cattle.io/os: linux
+    apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-09-04T18:57:43.642068939Z"
+    description: Um pacote da aplicação giropops-senhas para Kubernetes - ambiente
+      de produção.
+    digest: fdc6235647c946b936316aded1d62bb025000a850cca7e2db99e34e2de2906f0
+    home: https://github.com/Tech-Preta/charts
+    icon: https://raw.githubusercontent.com/Tech-Preta/giropops-senhas/main/static/linuxtips-logo.png
+    keywords:
+    - giropops
+    - senhas
+    - passwords
+    - generator
+    - linuxtips
+    maintainers:
+    - email: contato@nataliagranato.xyz
+      name: Natália Granato
+      url: https://github.com/nataliagranato
+    name: giropops-senhas-prd
+    sources:
+    - https://github.com/Tech-Preta/giropops-senhas
+    - https://github.com/Tech-Preta/charts
+    type: application
+    urls:
+    - https://tech-preta.github.io/charts/giropops-senhas-prd-0.1.0.tgz
+    version: 0.1.0
+  giropops-senhas-stg:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2025-09-04T18:57:43.642513679Z"
+    description: Um pacote da aplicação giropops-senhas para Kubernetes - ambiente
+      de staging.
+    digest: 39f49b0ff90d1015b5630510b07e117297efc3f4c1498581bc926d6f7db8fff5
+    home: https://github.com/Tech-Preta/charts
+    icon: https://raw.githubusercontent.com/Tech-Preta/giropops-senhas/main/static/linuxtips-logo.png
+    keywords:
+    - giropops
+    - senhas
+    - passwords
+    - generator
+    - linuxtips
+    maintainers:
+    - email: contato@nataliagranato.xyz
+      name: Natália Granato
+      url: https://github.com/nataliagranato
+    name: giropops-senhas-stg
+    sources:
+    - https://github.com/Tech-Preta/giropops-senhas
+    - https://github.com/Tech-Preta/charts
+    type: application
+    urls:
+    - https://tech-preta.github.io/charts/giropops-senhas-stg-0.1.0.tgz
+    version: 0.1.0
   rundeck-exporter:
   - apiVersion: v2
     appVersion: 1.16.0
-    created: "2024-07-01T00:21:56.925677149-03:00"
+    created: "2025-09-04T18:57:43.643111346Z"
     description: Rundeck Metrics Exporter for Prometheus.
-    digest: fdab24aa83a891be040d996968bc9c688b22f1b304c106f0ac636222f8a23911
+    digest: 8edd1ce490ae5112c6f41a3b73e0940cb43dca50ba8a7fb753c71de3dbb5335c
     icon: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRKePwGb88xL3gFzccHHlCyYI7jWU-phaAaQRPRXfHB6ofpwBgLdVbNtabF-YRyccl85Rk&usqp=CAU
     keywords:
     - rundeck-exporter
@@ -88,9 +104,9 @@ entries:
   super-mario:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-07-01T00:21:56.926433879-03:00"
+    created: "2025-09-04T18:57:43.643489552Z"
     description: Um gráfico Helm para Kubernetes
-    digest: fae0d9405186726c43f0800da557ab0eabd73b5e90481d1707b45dea549d2a69
+    digest: 6257f2bc9ecd672869c6655d106b847d40c519c6f1d7b5f964cb59201435e47f
     icon: https://observatoriodegames.uol.com.br/wp-content/uploads/2023/04/Super-Mario.jpg
     maintainers:
     - email: contato@nataliagranato.xyz
@@ -103,7 +119,7 @@ entries:
   trudesk:
   - apiVersion: v2
     appVersion: 1.0.0
-    created: "2024-07-01T00:21:56.933583654-03:00"
+    created: "2025-09-04T18:57:43.651013144Z"
     dependencies:
     - condition: elasticsearch.enabled
       name: elasticsearch
@@ -114,11 +130,11 @@ entries:
       repository: https://charts.bitnami.com/bitnami
       version: 13.6.0
     description: Helm Chart Trudesk
-    digest: d0a6a938bbf33f9bdc7d535f891a2c611e9539845d5cab2a96aba7fc611ed8e7
+    digest: 94ef77171ee0d03d7b154d5eb024afc55806203a101a45a1c540d5706c4a6628
     icon: https://docs.trudesk.io/v1.2/img/defaultLogoDark.png
     name: trudesk
     type: application
     urls:
     - https://tech-preta.github.io/charts/trudesk-1.0.0.tgz
     version: 1.0.0
-generated: "2024-07-01T00:21:56.917701786-03:00"
+generated: "2025-09-04T18:57:43.640087979Z"

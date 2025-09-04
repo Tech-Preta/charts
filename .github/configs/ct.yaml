@@ -1,0 +1,12 @@
+---
+# Chart testing configuration
+remote: origin
+target-branch: main
+chart-dirs:
+  - charts
+chart-repos:
+  - bitnami=https://charts.bitnami.com/bitnami
+  - elastic=https://helm.elastic.co
+helm-extra-args: --timeout 600s
+check-version-increment: true
+debug: false
